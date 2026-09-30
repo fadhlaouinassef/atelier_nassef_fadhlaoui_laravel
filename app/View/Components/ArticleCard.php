@@ -11,14 +11,14 @@ class ArticleCard extends Component
     /**
      * Create a new component instance.
      */
-   public $titre ;
-   public $contenu ;
-   public $auteur ;
-    public function __construct($titre , $contenu , $auteur)
+    public string $titre;
+
+    public string $auteur;
+
+    public function __construct(string $titre, string $auteur)
     {
-        $this->titre  = $titre;
-        $this->contenu = $contenu;
-        $this->auteur  = $auteur;
+        $this->titre = $titre;
+        $this->auteur = $auteur;
     }
 
     /**

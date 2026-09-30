@@ -15,12 +15,16 @@ class CheckAge
      */
     public function handle(Request $request, Closure $next): Response
     {
+        $age = $request->query('age');
 
-
-        if($request->query('age') < 18){
-
-            return redirect('/acces-refuse');
+        if (! is_scalar($age) || ! ctype_digit((string) $age) || (int) $age > 120) {
+            abort(422, 'Le paramètre age doit être un entier entre 0 et 120.');
         }
+
+        if ((int) $age <= 18) {
+            return redirect()->route('acces-refuse');
+        }
+
         return $next($request);
     }
 }
